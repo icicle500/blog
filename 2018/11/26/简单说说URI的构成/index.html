@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/blog/img/favicon.ico">
+
+    <title>
+        
+        简单说说URI的构成 - 柴火垛 | 冰凌的blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/blog/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/blog/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 冰凌的blog </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/blog/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>icicleling</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/blog/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/blog/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/blog/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/blog/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解析URI的结构"><span class="toc-text">解析URI的结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分段解析一下是这样的："><span class="toc-text">分段解析一下是这样的：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#协议类型"><span class="toc-text">协议类型:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器地址"><span class="toc-text">服务器地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口号"><span class="toc-text">端口号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件路径"><span class="toc-text">文件路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询字符串"><span class="toc-text">查询字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#片段标识符"><span class="toc-text">片段标识符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束"><span class="toc-text">结束</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 冰凌的blog </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        简单说说URI的构成
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-11-26 19:39:01</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/blog/tags/#网络协议" title="网络协议">网络协议</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>最近我用vscode的时候，有个配置项是homepage。我填了个“./”，提示我不成，这不算个URI。</p>
+<p>那怎么算个URI呢，我就查了一下，然后记一笔。</p>
+<h2 id="解析URI的结构"><a href="#解析URI的结构" class="headerlink" title="解析URI的结构"></a>解析URI的结构</h2><p>举个例子吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;abc.com</span><br></pre></td></tr></table></figure>
+<p>这是一个最简单的网址，分为两个部分，<code>http</code>是协议部分，<code>abc.com</code>是服务器地址。</p>
+<p>当然这太简单了，较为完整的应该是这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;abc.com:80&#x2F;home&#x2F;index.html?a&#x3D;one&amp;b&#x3D;two#boom</span><br></pre></td></tr></table></figure>
+<h3 id="分段解析一下是这样的："><a href="#分段解析一下是这样的：" class="headerlink" title="分段解析一下是这样的："></a>分段解析一下是这样的：</h3><ol>
+<li><strong><code>http</code></strong> <a href="#协议类型">协议类型</a></li>
+<li><strong><code>abc.com</code></strong> <a href="#服务器地址">服务器地址</a></li>
+<li><strong><code>80</code></strong> <a href="#端口号">端口号</a></li>
+<li><strong><code>/home/index.html/</code></strong> <a href="#文件路径">文件路径</a></li>
+<li><strong><code>?a=one&amp;b=two</code></strong> <a href="#查询字符串">查询字符串</a></li>
+<li><strong><code>#boom</code></strong> <a href="#片段标识符">片段标识符</a></li>
+</ol>
+<h3 id="协议类型"><a href="#协议类型" class="headerlink" title="协议类型:"></a>协议类型:</h3><p>例子里的是http协议，URI有多种的不同的协议。</p>
+<p>比如说以下几种都是URI：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ftp:&#x2F;&#x2F;ftp.test.com</span><br><span class="line">file:&#x2F;&#x2F;&#x2F;doc&#x2F;help.txt</span><br><span class="line">mailto:abc@qq.com</span><br></pre></td></tr></table></figure>
+<p>可能有人会注意到协议后面有的带俩斜杠有的带仨，有的不带。</p>
+<p>带两个斜杠有什么用呢，我查了一下，其实并没有什么用，起到的是一个分隔符的作用，把协议类型和后续的内容分隔开而已。其实按理说只需要一个冒号也就够了，我猜这就是为什么有的协议直接就没有后面的两个斜杠的原因。</p>
+<p>至于file为什么有三个斜杠呢，事实上他还是两个斜杠，三个是你的错觉。在上面我们说过结构，file其实只是把服务器地址这个结构给省掉了，因为他标识的是你本地的文件，并不需要服务器地址。如果写成另一种样子你应该就明白了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:&#x2F;&#x2F;localhost&#x2F;test.txt</span><br></pre></td></tr></table></figure>
+<p>想想，要是没有了中间的服务器地址，不就成了<code>file:///test.txt</code>了</p>
+<h3 id="服务器地址"><a href="#服务器地址" class="headerlink" title="服务器地址"></a>服务器地址</h3><p>这个可讲的不多，服务器地址就是普通的一个地址罢了，正经的应该是这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1</span><br></pre></td></tr></table></figure>
+<p>这样的一个ip地址，标识了服务器的位置。那为什么日常见到的多数是网址而不是ip地址呢。实际上是你访问网址的时候，首先要过一遍DNS，然后DNS把咱们那些网址转换成了这种ip地址，所以本质上依然是ip地址</p>
+<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p>端口标识的是一个服务，或者说一个程序。当你通过前面那些定位到了一个服务器后，就会依靠端口进行更为精确的定位。比如说我开了一个nodejs服务，它监听3000端口，这个时候你访问我这个服务器的3000端口，nodejs才会做出响应。</p>
+<p>那又比如说我开了两个，一个是3000端口，另一个是3001。端口号就可以精确的访问到相应的服务。如果要是没有端口号，那整个服务器就成了一坨了，分不清谁是谁了，也不知道你具体要请求谁。</p>
+<h3 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h3><p>呃…这个真的就只是普通的文件路径，没有什么好说的。</p>
+<h3 id="查询字符串"><a href="#查询字符串" class="headerlink" title="查询字符串"></a>查询字符串</h3><p>查询字符串，这一部分会作为参数传给服务器，服务器接收到这些参数然后做出响应。</p>
+<p>具体的例子嘛，你去百度个东西，就能看到网址后面跟了你查询的关键字。也就是百度的服务器接收到了你的关键字，然后返回给你查询的结果，就是你看到的搜索后的内容。</p>
+<h3 id="片段标识符"><a href="#片段标识符" class="headerlink" title="片段标识符"></a>片段标识符</h3><p>这个相对其他的来说较为少见一点，它跟在URI的最末尾。一般用来定位网页上的内容，比如点击页面上的一个链接，跳到当前页面的某一个位置。它和服务器没有关系，不会发送请求也不会刷新网页。</p>
+<p>在目前的前端中，单页面应用常用它来跳转路由。举个例子的话，网易云音乐的网页版，你注意它的链接，就有#号的存在，点击链接的时候看起来是在跳转页面，实际上没有刷新，所以音乐播放也不会断。</p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>首位呼应一下，那么“./”，用URI写到底怎么写呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:.&#x2F;</span><br></pre></td></tr></table></figure>
+<p>是的，就酱。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/blog/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/blog/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

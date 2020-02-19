@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/blog/img/favicon.ico">
+
+    <title>
+        
+        使用ssh连接github - 柴火垛 | 冰凌的blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/blog/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/blog/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 冰凌的blog </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/blog/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>icicleling</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/blog/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/blog/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/blog/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/blog/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成ssh公钥和私钥"><span class="toc-text">生成ssh公钥和私钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github添加ssh-keys"><span class="toc-text">github添加ssh keys</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试一下"><span class="toc-text">测试一下</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 冰凌的blog </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        使用ssh连接github
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-08-22 22:52:40</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/blog/tags/#github" title="github">github</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="生成ssh公钥和私钥"><a href="#生成ssh公钥和私钥" class="headerlink" title="生成ssh公钥和私钥"></a>生成ssh公钥和私钥</h2><p>打开你的终端（cmd或powershell）</p>
+<p>输入以下命令并回车</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &#39;你的邮箱&#39;</span><br></pre></td></tr></table></figure>
+
+<p>其实单引号包括的这块，就是个类似于备注的东西，不过大家都写邮箱，建议写邮箱就是了，你要是写别的也完全没问题。</p>
+<p>运行后它会要求你输入密码，个人用的话，密码没啥意义，ssh不就图个方便么。<br>按两下回车略过即可。</p>
+<p>然后它会告诉你私钥和公钥的储存位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved in C:\Users\youruser&#x2F;.ssh&#x2F;id_rsa.</span><br><span class="line">Your public key has been saved in C:\Users\youruser&#x2F;.ssh&#x2F;id_rsa.pub.</span><br></pre></td></tr></table></figure>
+<p>基本就是你c盘下的用户文件夹，然后用户名文件夹，然后有个叫.ssh的文件夹。在这个文件夹里有两个文件，<strong>id_rsa</strong>和<strong>id_rsa.pub</strong>。</p>
+<p>如果你看到的两个文件都是一样的名，比如都叫id_rsa，那说明你没有开文件后缀名显示。这个很简单，百度一下就有，不再赘述。</p>
+<p>用记事本打开<strong>id_rsa.pub</strong>，pub顾名思义public，公钥。复制里面所有的内容，为下一步在github添加ssh keys做准备。</p>
+<h2 id="github添加ssh-keys"><a href="#github添加ssh-keys" class="headerlink" title="github添加ssh keys"></a>github添加ssh keys</h2><p>首先登录你的github，点击右上角头像，有一个<strong>setting</strong>。</p>
+<p>进入这个设置页面后，左侧的选项列表中有一个<strong>SSH and GPG keys</strong>。</p>
+<p>点开后很明显能看到右侧有一个<strong>New SSH keys</strong>的绿色按钮，点击按钮，给它起个名（title），然后在key输入框中粘贴上面咱们复制好的公钥。再点下<strong>Add SSH keys</strong>，这就成了。</p>
+<h2 id="测试一下"><a href="#测试一下" class="headerlink" title="测试一下"></a>测试一下</h2><p>在终端中输入以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>若是返回 <em>Hi [你的github名]! You’ve successfully authenticated……</em></p>
+<p>说明ssh连接成功。本地和github已经打通，以后你就不需要输密码了。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/blog/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/blog/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
