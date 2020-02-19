@@ -11,7 +11,7 @@
 
     <title>
         
-        小知识: 关于z-index的最大值 - 柴火垛 | 冰凌的blog
+        about - 柴火垛 | 冰凌的blog
         
     </title>
 
@@ -75,7 +75,7 @@
                     <span>存档</span>
                 </a>
             </li>
-            <li >
+            <li  class=active >
                 <a href="/blog/about/">
                     <i class="iconfont icon-guanyu2"></i>
                     <span>关于</span>
@@ -91,10 +91,6 @@
             
         </ul>
     </div>
-    
-        <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#废话结束"><span class="toc-text">废话结束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后记："><span class="toc-text">后记：</span></a></li></ol>
-</div>
     
 </div>
 
@@ -120,56 +116,12 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-
-
-<div class="post-container">
-    <div class="post-title">
-        小知识: 关于z-index的最大值
+<div class="post-content ">
+    
+    
+    <div id="comment-container">
     </div>
-
-    <div class="post-meta">
-        <span class="attr">发布于：<span>2019-05-22 21:07:09</span></span>
-        
-        <span class="attr">标签：/
-        
-        <a class="tag" href="/blog/tags/#css" title="css">css</a>
-        <span>/</span>
-        
-        <a class="tag" href="/blog/tags/#小知识" title="小知识">小知识</a>
-        <span>/</span>
-        
-        
-        </span>
-        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
-</span>
-</span>
-    </div>
-    <div class="post-content ">
-        <p>作为一个优秀的前端，z-index一定要写的比别人大。</p>
-<p>别人八十你八百，别人八百你八千，别人八千你八万…</p>
-<p>但终于有一天，我厌倦了这种竞争。我应该找寻z-index的终级奥义。只要拥有了z-index的最大值，我的div就能占据页面的最高级，从而立于不败之地！</p>
-<h3 id="废话结束"><a href="#废话结束" class="headerlink" title="废话结束"></a>废话结束</h3><p>听好，z-index的最大值就是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2147483647</span><br></pre></td></tr></table></figure>
-<p>是不有点眼熟，32位操作系统的int最大值。</p>
-<p>我简单搜了搜，规范里应该是没有规定z-index最大值应该是多少，所以各浏览器就自行发挥了。而发挥的结果就是取了这么一个数字。</p>
-<p>你们有空可以自己试试，设置比这更大的数字是不起作用的。</p>
-<p>拿去玩吧，再也没有人的div能比你更强大。再也没有。</p>
-<hr>
-<h3 id="后记："><a href="#后记：" class="headerlink" title="后记："></a>后记：</h3><p>我之前是个写网页的，而我设z-index的原则就是：</p>
-<p><strong>他妈的设爆！</strong></p>
-<p>没错，就是他妈的设爆，老子才不管什么页面错乱什么的，每次设z-index就是姬芭的一大坨。百位设成千位，千位设成万位。万位还能再追加几个零，跟闭眼敲数字没两样。</p>
-<p>我还记得，我那个月上班25天，产品跑来跟我说，这个月页面出现二十六个bug，你有头绪吗？</p>
-<p>我他妈怎么会知道。</p>
-
-        
-        <br />
-        <div id="comment-container">
-        </div>
-        <div id="disqus_thread"></div>
-
-        <div id="lv-container">
-        </div>
-
+    <div id="lv-container">
     </div>
 </div>
 
@@ -211,7 +163,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/blog/"
-    window.isPost = true
+    window.isPost = false
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
